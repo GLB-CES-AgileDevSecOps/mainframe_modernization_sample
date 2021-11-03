@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="INFO">
+
+	<Properties>
+	      <property name="log.file.path">C:/logs/javalog</property>  
+	      <property name="log.file.name">democustomeronline.log</property>  
+	      <property name="log.file.size">4 MB</property>  
+	      <property name="log.level">INFO</property>   
+	</Properties> 
+
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		
+		<RollingFile name="RollingFile" filename="${log.file.path}/${log.file.name}" filepattern="${log.file.path}/archieve/$${date:yyyy-MM-dd}/${log.file.name}-%d{yyyy-MM-dd}-%i.log.zip" >
+			<ThresholdFilter level="${log.level}" onMatch="ACCEPT" onMismatch="DENY"/>
+	        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n" />
+	        <Policies>
+	            <SizeBasedTriggeringPolicy size="60 MB" />
+	        </Policies>
+	        <DefaultRolloverStrategy max="600" />
+	    </RollingFile>
+		
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.springframework" level="INFO" additivity="false" />
+		<Logger name="com" level="INFO" additivity="false" />
+		<Logger name="log4j.logger.org.apache.cxf" level="INFO" additivity="false" />
+				
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
+		</Root>
+		
+	</Loggers>
+
+</Configuration>
