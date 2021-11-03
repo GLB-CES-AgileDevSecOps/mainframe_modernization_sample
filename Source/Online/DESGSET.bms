@@ -1,0 +1,83 @@
+*Copyright © 2019-2020, 2021 ATOS SYNTEL, INC. and affiliates.
+*All Rights Reserved. This software (the "Software") is a       
+*copyrighted work owned by Atos Syntel, Inc. and its affiliates.      
+*Nothing contained in this notice may be interpreted as an       
+*assignment of the ownership of the copyright pertaining to the      
+*Software.      
+*      
+*If you (the "Customer") have received the Software as part of a      
+*Deliverable under the applicable contract, or Master Service      
+*Agreement, or equivalent (the "Contract"), then the Software is      
+*being licensed to the Customer under the relevant Intellectual      
+*Property provisions governing Atos Syntel Background       
+*Intellectual Property in the Contract (the "IP Clause"), and the       
+*Customer's use of the Software is governed by the IP Clause. The       
+*Software is made available to the Customer solely for the       
+*purpose contained in the IP CLAUSE. Any reproduction or       
+*redistribution of the Software not in accordance with the IP       
+*Clause is expressly prohibited.      
+*       
+*WITHOUT LIMITING THE FOREGOING, COPYING OR REPRODUCTION OF THE      
+*SOFTWARE TO ANY OTHER SERVER OR LOCATION FOR FURTHER       
+*REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PROHIBITED, UNLESS       
+*SUCH REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PERMITTED BY       
+*THE IP CLAUSE.      
+*       
+*THE SOFTWARE IS WARRANTED, IF AT ALL, ONLY ACCORDING TO THE       
+*TERMS OF THE CONTRACT. EXCEPT AS WARRANTED IN THE CONTRACT,       
+*ATOS SYNTEL, INC. AND ITS AFFILIATES HEREBY DISCLAIM ALL       
+*WARRANTIES AND CONDITIONS WITH REGARD TO THE SOFTWARE, INCLUDING       
+*ALL WARRANTIES AND CONDITIONS OF MERCHANTABILITY, WHETHER       
+*EXPRESS, IMPLIED OR STATUTORY, FITNESS FOR A PARTICULAR PURPOSE,       
+*TITLE AND NON-INFRINGEMENT.      
+*      
+         PRINT NOGEN
+DESGSET  DFHMSD TYPE=&SYSPARM,MODE=INOUT,LANG=COBOL,                   X
+               TERM=3270-2,CTRL=(FREEKB),STORAGE=AUTO,                 X
+               DSATTS=(COLOR,HILIGHT),MAPATTS=(COLOR,HILIGHT)          X
+               TIOAPFX=YES
+DESGMNT  DFHMDI SIZE=(24,80),LINE=1,COLUMN=1	
+TITLE    DFHMDF POS=(05,01),ATTRB=(NORM,PROT),LENGTH=32,               X
+               INITIAL='Designation Master Maintenance',COLOR=GREEN
+         DFHMDF POS=(06,01),ATTRB=(NORM,PROT),LENGTH=30,               X
+               INITIAL='------------------------------',COLOR=GREEN
+         DFHMDF POS=(07,01),ATTRB=(NORM,PROT),LENGTH=34,               X
+               INITIAL='Action (A)dd/(C)hange/(D)elete :',COLOR=GREEN
+ACTION   DFHMDF POS=(07,35),                                           X
+               ATTRB=(NORM,UNPROT,FSET),LENGTH=1,                      X
+               INITIAL='_',COLOR=TURQUOISE 
+         DFHMDF POS=(08,01),ATTRB=(NORM,PROT),LENGTH=30,               X
+               INITIAL='------------------------------',COLOR=GREEN
+         DFHMDF POS=(09,01),ATTRB=(NORM,PROT),LENGTH=25,               X
+               INITIAL='Designation Code        :',COLOR=GREEN
+DESGCD   DFHMDF POS=(09,28),                                           X
+               ATTRB=(NORM,UNPROT,FSET),LENGTH=5,                      X
+               INITIAL='_____',COLOR=TURQUOISE 
+         DFHMDF POS=(10,01),ATTRB=(NORM,PROT),LENGTH=25,               X
+               INITIAL='Designation Description :',COLOR=GREEN
+DESGDS   DFHMDF POS=(10,28),                                           X
+               ATTRB=(NORM,UNPROT,FSET),LENGTH=50,                     X
+               COLOR=TURQUOISE 
+         DFHMDF POS=(11,01),ATTRB=(NORM,PROT),LENGTH=25,               X
+               INITIAL='Basic Pay               :',COLOR=GREEN
+BASPAY   DFHMDF POS=(11,28),                                           X
+               ATTRB=(NORM,UNPROT,FSET),LENGTH=5,PICIN=9(5),           X
+               COLOR=TURQUOISE,PICOUT=9(5) 
+         DFHMDF POS=(12,01),ATTRB=(NORM,PROT),LENGTH=25,               X
+               INITIAL='HRA Pay                 :',COLOR=GREEN
+HRAPAY   DFHMDF POS=(12,28),                                           X
+               ATTRB=(NORM,UNPROT,FSET),LENGTH=5,PICIN=9(5),           X
+               COLOR=TURQUOISE,PICOUT=9(5) 
+         DFHMDF POS=(13,01),ATTRB=(NORM,PROT),LENGTH=25,               X
+               INITIAL='Gross Pay               :',COLOR=GREEN
+GRSPAY   DFHMDF POS=(13,28),                                           X
+               ATTRB=(NORM,PROT),LENGTH=7,PICIN=9(7),                  X
+               COLOR=GREEN,PICOUT=9(7) 
+         DFHMDF POS=(14,01),ATTRB=(NORM,PROT),LENGTH=30,               X
+               INITIAL='------------------------------',COLOR=GREEN
+         DFHMDF POS=(20,01),ATTRB=(NORM,PROT),LENGTH=30,               X
+               INITIAL='PF3 - Return to Menu   ',COLOR=GREEN
+SYSOUT   DFHMDF POS=(21,1),ATTRB=(BRT,PROT),LENGTH=60
+MSGLIN   DFHMDF POS=(22,1),ATTRB=(BRT,PROT),LENGTH=50
+   	 DFHMSD TYPE=FINAL
+         END
